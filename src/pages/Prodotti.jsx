@@ -20,12 +20,18 @@ export default function Prodotti() {
 
     return(
         <>
-            <h1>
-                Lista Prodotti
-            </h1>
-            {prodottiData.map(prodotto => (
-                <article key={prodotto.id}><ProdottoCard prodotto={prodotto} /></article>
-            ))}
+            <section className="container">
+                <h1>
+                    Lista Prodotti
+                </h1>
+                
+                <div className="row wrap">
+                    {prodottiData.map(prodotto => (
+                        <article className="col-6" key={prodotto.id}><ProdottoCard prodotto={prodotto} /></article>
+                    ))}
+                </div>
+            </section>
+            <hr />
         </>
     )
 }
