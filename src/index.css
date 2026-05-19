@@ -1,7 +1,11 @@
 @import url('bootstrap');
 @import url('bootstrap-icons');
 
-
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 body {
   font-family: 'Raleway Variable', sans-serif;
 }
@@ -10,4 +14,17 @@ nav > a.active{
   border-radius: 5px;
   color: black;
   background-color: rgb(150, 185, 230);
+}
+.price{
+  color: rgb(252, 57, 57);
+}
+.card{
+  margin-top: 1rem;
+  height: 30rem;
+  align-items: center;
+}
+.imgProdotto{
+  height: 300px;
+  width: 300px;
+  margin-top: 1rem;
 }
