@@ -1,36 +1,37 @@
 import { useEffect, useState } from "react"
 import ProdottoCard from "./../components/ProdottoCard"
+import { Link } from "react-router-dom";
 
 export default function Prodotti() {
+    const api_url = 'https://fakestoreapi.com/products';
+    const [products, setProducts] = useState([]);
 
-    const [prodottiData, setProdottiData] = useState([])
-
-    function fetchData() {
-        const url= 'https://fakestoreapi.com/products';
+    function fetchProducts(url){
         fetch(url)
-            .then(res => res.json())
-            .then(data => {
-                setProdottiData(data);
-                console.log(data);
-            })
+        .then(res => res.json())
+        .then(data => setProducts(data))
+        .catch(err => console.error(err));
     }
+
     useEffect(() => {
-        fetchData()
+        fetchProducts(api_url);
     }, [])
 
     return(
         <>
-            <section className="container">
-                <h1>
-                    Lista Prodotti
-                </h1>
-                
-                <div className="row wrap">
-                    {prodottiData.map(prodotto => (
-                        <article className="col-6" key={prodotto.id}><ProdottoCard prodotto={prodotto} /></article>
-                    ))}
-                </div>
-            </section>
+         <div className="p-5 mb-4 bg-light">
+
+         </div>
+         <div className="container">
+            <div className="row row-cols-1 row-cols-md3 row-cols-lg-3 g-4">
+                {products.map(product => (
+                    <div className="col-6" key={product.id}>
+                            <article><ProdottoCard prodotto={product} /></article>
+                    </div>
+                ))}
+            </div>
+         </div>  
+            
             <hr />
         </>
     )

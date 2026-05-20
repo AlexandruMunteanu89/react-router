@@ -1,6 +1,6 @@
-
+import { Link } from "react-router-dom"
 export default function ProdottoCard({prodotto}) {
-    const {title, image, price, id } = prodotto;
+    //const {title, image, price, id } = prodotto;
 
     return (
         <div className="col-12">
@@ -10,6 +10,7 @@ export default function ProdottoCard({prodotto}) {
                     <h3>{prodotto.title}</h3>
                     <p className="price">Price: {prodotto.price}</p>
                 </div>
+                <Link className="p-2" to={`/prodotti/${prodotto.id}`}>Di Piu</Link>
             </div>
         </div>
     )
