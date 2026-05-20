@@ -13,7 +13,7 @@ function DettagliProdotto() {
         .then(res => res.json())
         .then(data => { console.log(data)
                         setProduct(data)})
-        .catch(err => console.error(err));
+        .catch(err => {navigate("/prodotti")})
     }, [api_url])
 
   return (
