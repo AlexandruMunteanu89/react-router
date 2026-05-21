@@ -7,7 +7,8 @@ function DettagliProdotto() {
     const api_url = `https://fakestoreapi.com/products/${id}`;
     const [product, setProduct] = useState();
     const navigate = useNavigate();
-    const [page, setPage] = useState({id});
+    const [page, setPage] = useState(1);
+    //const api_url = `https://exemplu.com/prodotti?page=${page}`;
 
     useEffect(()=>{
         fetch(api_url)
@@ -17,8 +18,22 @@ function DettagliProdotto() {
         .catch(err => {navigate("/prodotti")})
     }, [api_url])
 
+    //la funzione per cambiare la pagina
+    function prossimaPagina() {
+    setPage(page + 1);
+    }
+    function paginaPrecedente() {
+    if (page > 1) {
+      setPage(page - 1);
+        }
+    }
+
   return (
     <div className="container">
+        <section>
+          {page > 1 ? (<button className="btn btn-warning" onClick={paginaPrecedente}>Pagina Precedente</button>) : ('')}
+          <button className="btn btn-warning m-2" onClick={prossimaPagina}>Prossima Pagina</button>
+        </section>
         <div className="dettaglio-card p-2 my-4">
             {product ? (
                 <div>
