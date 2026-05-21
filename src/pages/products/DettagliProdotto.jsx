@@ -1,6 +1,8 @@
 
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { Cardio } from 'ldrs/react'
+import 'ldrs/react/Cardio.css'
 
 function DettagliProdotto() {
     const { id } = useParams();
@@ -8,7 +10,8 @@ function DettagliProdotto() {
     const [product, setProduct] = useState();
     const navigate = useNavigate();
     const [page, setPage] = useState(1);
-    //const api_url = `https://exemplu.com/prodotti?page=${page}`;
+    
+    function Loading() {}
 
     useEffect(()=>{
         fetch(api_url)
@@ -30,10 +33,6 @@ function DettagliProdotto() {
 
   return (
     <div className="container">
-        <section>
-          {page > 1 ? (<button className="btn btn-warning" onClick={paginaPrecedente}>Pagina Precedente</button>) : ('')}
-          <button className="btn btn-warning m-2" onClick={prossimaPagina}>Prossima Pagina</button>
-        </section>
         <div className="dettaglio-card p-2 my-4">
             {product ? (
                 <div>
@@ -44,10 +43,16 @@ function DettagliProdotto() {
                     <p>Rate: {product.rating.rate}</p>
                     <p>Count: {product.rating.count}</p>
                     <p className="price">Price: {product.price}</p>
+                    <section>
+          {page > 1 ? (<button className="btn btn-warning" onClick={paginaPrecedente}>Pagina Precedente</button>) : ('')}
+          <button className="btn btn-warning m-2" onClick={prossimaPagina}>Prossima Pagina</button>
+        </section>
                 </div>
             ) :
             (
-                <p>Loading product...</p>
+                <div className="d-flex justify-content-center align-items-center vh-100">
+      <Cardio size="50" stroke="4" speed="2" color="black" />
+    </div>
             )}
         </div>
     </div>                
