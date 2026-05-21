@@ -5,6 +5,7 @@ import AboutPage from "./pages/AboutPage";
 import Prodotti from "./pages/Prodotti";
 import DefaultLayout from "./layouts/DefaultLeyout";
 import DettagliProdotto from "./pages/products/DettagliProdotto";
+import NotFound from './pages/NotFound';
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
           <Route path="/chi-siamo" element={<AboutPage />} />
           <Route path="/prodotti" element={<Prodotti />} />
           <Route path="/prodotti/:id" element={<DettagliProdotto />} />
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
     </BrowserRouter>

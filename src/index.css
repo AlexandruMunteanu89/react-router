@@ -23,8 +23,17 @@ nav ul li > a.active{
   height: 600px;
   align-items: center;
 }
+.dettaglio-card{
+  border: solid black;
+  border-radius: 12px;
+  background-color: antiquewhite;
+
+}
 .imgProdotto{
   height: 300px;
   width: 300px;
   margin-top: 1rem;
+}
+.imgNotFound{
+   height: 400px;
 }
